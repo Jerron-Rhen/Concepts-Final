@@ -14,6 +14,7 @@ class Ball < Square
   # @return [Ball]
   def initialize(speed: nil, direction: nil, **args)
     super(args)
+   #super()
     @speed = speed || DEFAULTS[:speed]
     @direction = direction || DEFAULTS[:direction]
   end

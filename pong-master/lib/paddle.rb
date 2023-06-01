@@ -11,6 +11,7 @@ class Paddle < Rectangle
   # @return [Pad]
   def initialize(speed: nil, constraints: {}, **args)
     super(args)
+    #super()
     @speed = speed || DEFAULTS[:speed]
     @constraints = constraints
   end

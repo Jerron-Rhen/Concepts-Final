@@ -12,17 +12,17 @@ set background:'green'
 # Each keypress influences on the  movement along the x and y axis.
 on :key_down do |event|
   if event.key == 'j'
-    @x_speed = -2
+    @x_speed = -5
     @y_speed = 0
   elsif event.key == 'l'
-    @x_speed = 2
+    @x_speed = 5
     @y_speed = 0
   elsif event.key == 'i'
     @x_speed = 0
-    @y_speed = -2
+    @y_speed = -5
   elsif event.key == 'k'
     @x_speed = 0
-    @y_speed = 2
+    @y_speed = 5
   end
 end
 

@@ -11,16 +11,16 @@ set background:'green'
 # Define what happens when a specific key is pressed.
 # Each keypress influences on the  movement along the x and y axis.
 on :key_down do |event|
-  if event.key == 'j'
+  if event.key == 'a'
     @x_speed = -2
     @y_speed = 0
-  elsif event.key == 'l'
+  elsif event.key == 'd'
     @x_speed = 2
     @y_speed = 0
-  elsif event.key == 'i'
+  elsif event.key == 'w'
     @x_speed = 0
     @y_speed = -2
-  elsif event.key == 'k'
+  elsif event.key == 's'
     @x_speed = 0
     @y_speed = 2
   end

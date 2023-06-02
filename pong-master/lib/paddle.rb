@@ -10,8 +10,8 @@ class Paddle < Rectangle
   # @param constraints [Hash] pad's constraints (e.g. max "y")
   # @return [Pad]
   def initialize(speed: nil, constraints: {}, **args)
-    super(args)
-    #super()
+    #super(args)
+    super()
     @speed = speed || DEFAULTS[:speed]
     @constraints = constraints
   end

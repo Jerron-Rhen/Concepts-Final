@@ -13,8 +13,8 @@ class Ball < Square
   # @param direction [Hash, nil] ball's x and y axis directions
   # @return [Ball]
   def initialize(speed: nil, direction: nil, **args)
-    super(args)
-   #super()
+   #super(args)
+    super()
     @speed = speed || DEFAULTS[:speed]
     @direction = direction || DEFAULTS[:direction]
   end

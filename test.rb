@@ -13,16 +13,22 @@ set background:'green'
 on :key_down do |event|
   if event.key == 'a'
     @x_speed = -2
+  if event.key == 'j'
+    @x_speed = -5
     @y_speed = 0
+  elsif event.key == 'l'
+    @x_speed = 5
   elsif event.key == 'd'
     @x_speed = 2
     @y_speed = 0
   elsif event.key == 'w'
     @x_speed = 0
+    @y_speed = -5
+  elsif event.key == 'k'
     @y_speed = -2
   elsif event.key == 's'
     @x_speed = 0
-    @y_speed = 2
+    @y_speed = 5
   end
 end
 

@@ -259,13 +259,13 @@ update do
 end
 
 on :key_held do |event|
-    if event.key == 'up'
+    if event.key == 'w'
     player.y_movement = -1
-    elsif event.key == 'down'
-    player.y_movement = 1
-    elsif event.key == 'w'
-    opponent.y_movement = -1
     elsif event.key == 's'
+    player.y_movement = 1
+    elsif event.key == 'up'
+    opponent.y_movement = -1
+    elsif event.key == 'down'
     opponent.y_movement = 1
   end
 end

@@ -87,11 +87,12 @@ class Paddle
   attr_writer :y_movement
   attr_reader :side
 
-  def initialize(side, movement_speed)
+  def initialize(side, movement_speed, num)
     @side = side
     @movement_speed = movement_speed
     @y_movement = 0
     @y = 200
+    @num = num
     if side == :left
       @x = X_OFFSET
     else
@@ -104,7 +105,24 @@ class Paddle
   end
 
   def draw
-    @shape = Rectangle.new(x: @x, y: @y, width: 25, height: HEIGHT, color: 'white')
+    #@shape = Rectangle.new(x: @x, y: @y, width: 25, height: HEIGHT, color: 'white')
+    if @side == :left
+      if @num == 0
+        @shape = Quad.new(x1: @x, y1: @y, x2: @x + 10, y2: @y, x3: @x, y3: @y + 150, x4: @x + 10, y4: @y + 150, color: 'white')
+      elsif @num == 1
+        @shape = Quad.new(x1: @x, y1: @y, x2: @x + 10, y2: @y, x3: @x, y3: @y + 100, x4: @x + 10, y4: @y + 100, color: 'white')
+      elsif @num == 2
+        @shape = Quad.new(x1: @x + 10, y1: @y, x2: @x + 20, y2: @y, x3: @x, y3: @y + 150, x4: @x + 10, y4: @y + 150, color: 'white')
+      end
+    else
+      if @num == 0
+        @shape = Quad.new(x1: @x, y1: @y, x2: @x - 10, y2: @y, x3: @x, y3: @y + 150, x4: @x - 10, y4: @y + 150, color: 'white')
+      elsif @num == 1
+        @shape = Quad.new(x1: @x, y1: @y, x2: @x - 10, y2: @y, x3: @x, y3: @y + 100, x4: @x - 10, y4: @y + 100, color: 'white')
+      elsif @num == 2
+        @shape = Quad.new(x1: @x - 10, y1: @y, x2: @x - 20, y2: @y, x3: @x, y3: @y + 100, x4: @x - 10, y4: @y + 100, color: 'white')
+      end
+    end
   end
 
   def hit_ball?(ball)
@@ -210,8 +228,8 @@ end
 
 ball_velocity = 8
 
-player = Paddle.new(:left, 5)
-opponent = Paddle.new(:right, 5)
+player = Paddle.new(:left, 5, 0)
+opponent = Paddle.new(:right, 5, 0)
 ball = Ball.new(ball_velocity)
 ball_trajectory = BallTrajectory.new(ball)
 @score  = { left: 0, right: 0 }
@@ -232,12 +250,14 @@ update do
     ball.bounce_off(player)
     PING_SOUND.play
     last_hit_frame = Window.frames
+    player = Paddle.new(:left, 5, rand(3))
   end
 
   if opponent.hit_ball?(ball)
     ball.bounce_off(opponent)
     PING_SOUND.play
     last_hit_frame = Window.frames
+    opponent = Paddle.new(:right, 5, rand(3))
   end
 
   player.move

@@ -113,6 +113,8 @@ class Paddle
         @shape = Quad.new(x1: @x, y1: @y, x2: @x + 10, y2: @y, x3: @x, y3: @y + 100, x4: @x + 10, y4: @y + 100, color: 'white')
       elsif @num == 2
         @shape = Quad.new(x1: @x + 10, y1: @y, x2: @x + 20, y2: @y, x3: @x, y3: @y + 150, x4: @x + 10, y4: @y + 150, color: 'white')
+      elsif @num == 3
+        @shape = Quad.new(x1: @x + 20, y1: @y, x2: @x + 40, y2: @y + 75, x3: @x + 20, y3: @y + 150, x4: @x, y4: @y + 75, color: 'white')
       end
     else
       if @num == 0
@@ -121,6 +123,8 @@ class Paddle
         @shape = Quad.new(x1: @x, y1: @y, x2: @x - 10, y2: @y, x3: @x, y3: @y + 100, x4: @x - 10, y4: @y + 100, color: 'white')
       elsif @num == 2
         @shape = Quad.new(x1: @x - 10, y1: @y, x2: @x - 20, y2: @y, x3: @x, y3: @y + 100, x4: @x - 10, y4: @y + 100, color: 'white')
+      elsif @num == 3
+        @shape = Quad.new(x1: @x - 20, y1: @y, x2: @x - 40, y2: @y + 75, x3: @x - 20, y3: @y + 150, x4: @x, y4: @y + 75, color: 'white')
       end
     end
   end
@@ -250,14 +254,14 @@ update do
     ball.bounce_off(player)
     PING_SOUND.play
     last_hit_frame = Window.frames
-    player = Paddle.new(:left, 5, rand(3))
+    player = Paddle.new(:left, 5, rand(4))
   end
 
   if opponent.hit_ball?(ball)
     ball.bounce_off(opponent)
     PING_SOUND.play
     last_hit_frame = Window.frames
-    opponent = Paddle.new(:right, 5, rand(3))
+    opponent = Paddle.new(:right, 5, rand(4))
   end
 
   player.move

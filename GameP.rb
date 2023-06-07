@@ -90,6 +90,7 @@ class Paddle
   def initialize(side, movement_speed, num)
     @side = side
     @movement_speed = movement_speed
+    @num = num
     @y_movement = 0
     @y = 200
     @num = num
@@ -105,6 +106,7 @@ class Paddle
   end
 
   def draw
+<<<<<<< Updated upstream
     #@shape = Rectangle.new(x: @x, y: @y, width: 25, height: HEIGHT, color: 'white')
     if @side == :left
       if @num == 0
@@ -125,6 +127,27 @@ class Paddle
         @shape = Quad.new(x1: @x - 10, y1: @y, x2: @x - 20, y2: @y, x3: @x, y3: @y + 100, x4: @x - 10, y4: @y + 100, color: 'white')
       elsif @num == 3
         @shape = Quad.new(x1: @x - 20, y1: @y, x2: @x - 40, y2: @y + 75, x3: @x - 20, y3: @y + 150, x4: @x, y4: @y + 75, color: 'white')
+=======
+    if @side == :left
+      if @num == 0
+        @shape = Rectangle.new(x: @x, y: @y, width: 25, height: HEIGHT, color: 'white')
+      elsif @num == 1
+        @shape = Rectangle.new(x: @x, y: @y, width: 25, height: HEIGHT - 50, color: 'white')
+      elsif @num == 2
+        @shape = Quad.new(x1: @x + 20, y1: @y, x2: @x + 40, y2: @y + 75, x3: @x + 20, y3: @y + 150, x4: @x, y4: @y + 75, color: 'white')
+      elsif @num == 3
+        @shape = Square.new(x: @x, y: @y, size: HEIGHT - 60, color: 'white')
+      end
+    else
+      if @num == 0
+        @shape = Rectangle.new(x: @x, y: @y, width: 25, height: HEIGHT, color: 'white')
+      elsif @num == 1
+        @shape = Rectangle.new(x: @x, y: @y, width: 25, height: HEIGHT - 50, color: 'white')
+      elsif @num == 2
+        @shape = Quad.new(x1: @x - 20, y1: @y, x2: @x - 40, y2: @y + 75, x3: @x - 20, y3: @y + 150, x4: @x, y4: @y + 75, color: 'white')
+      elsif @num == 3
+        @shape = Square.new(x: @x - 70, y: @y, size: HEIGHT - 60, color: 'white')
+>>>>>>> Stashed changes
       end
     end
   end

@@ -217,9 +217,9 @@ ball_trajectory = BallTrajectory.new(ball)
 @score  = { left: 0, right: 0 }
 
 
-music = Music.new('./SFX/music.wav')
-music.loop = true
-music.play
+bmg = Music.new('./SFX/music.wav')
+bmg.loop = true
+bmg.play
 
 last_hit_frame = 0
 

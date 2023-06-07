@@ -142,14 +142,14 @@ end
 class Ball
   HEIGHT = 25
 
-  attr_reader :shape, :x_velocity, :y_velocity
+  attr_reader :shape, :x_velocity, :y_velocity,:x
 
   def initialize(speed)
     @x = 320
     @y = 400
     @speed = speed
-    @y_velocity = speed
-    @x_velocity = -speed
+    @y_velocity = [-speed, speed].sample
+    @x_velocity = [-speed, speed].sample
   end
 
   def move
@@ -193,7 +193,7 @@ class Ball
 
   def out_of_bounds?
     @x <= 0 || @shape.x2 >= Window.width
-  end
+  end  
 
   private
 
@@ -207,6 +207,21 @@ class Ball
   end
 end
 
+class ScoreBoard
+
+  attr_accessor :OScore,:PScore
+  def initialize(pS, oS)
+      @OScore = oS 
+      @PScore = pS
+     # @scoreB = [@OScore, @PScore]
+  end
+
+  def draw
+    left = Text.new(@PScore, x: Window.width / 2 - 100, y: 5, font: 'assets/PressStart2P.ttf', color: 'gray', size: 40)
+    right = Text.new(@OScore, x: Window.width / 2 + 60, y: 5, font: 'assets/PressStart2P.ttf', color: 'gray', size: 40)
+  end
+
+end
 
 ball_velocity = 8
 
@@ -214,8 +229,7 @@ player = Paddle.new(:left, 5)
 opponent = Paddle.new(:right, 5)
 ball = Ball.new(ball_velocity)
 ball_trajectory = BallTrajectory.new(ball)
-@score  = { left: 0, right: 0 }
-
+scoreBoard = ScoreBoard.new(0,0)
 
 bmg = Music.new('./SFX/music.wav')
 bmg.loop = true
@@ -240,6 +254,8 @@ update do
     last_hit_frame = Window.frames
   end
 
+  scoreBoard.draw
+  
   player.move
   player.draw
 
@@ -253,6 +269,12 @@ update do
     opponent.draw
 
   if ball.out_of_bounds?
+    if ball.x <= 100
+      scoreBoard.OScore += 1
+    else
+      scoreBoard.PScore += 1
+    end
+
     ball = Ball.new(ball_velocity)
     ball_trajectory = BallTrajectory.new(ball)
   end

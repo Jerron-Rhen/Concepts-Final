@@ -4,8 +4,8 @@ class Ball
     attr_reader :shape, :x_velocity, :y_velocity,:x
   
     def initialize(speed)
-      @x = 320
-      @y = 400
+      @x = Window.width/2
+      @y = Window.height/2
       @speed = speed
       @y_velocity = [-speed, speed].sample
       @x_velocity = [-speed, speed].sample

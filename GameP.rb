@@ -4,15 +4,15 @@ require './lib/board'
 require './lib/ball'
 require './lib/paddle'
 
-set title: 'Pong', background: 'black', with: 9000, height: 480#, resizable: false
+set title: 'Pong', background: 'black', width: 960, height: 720#, resizable: false
 
 PONG_SOUND = Sound.new('./SFX/pong.wav')
 PING_SOUND = Sound.new('./SFX/ping.wav')
 
-ball_velocity = 8
+ball_velocity = 6
 
-player = Paddle.new(:left, 5, 0, 200)
-opponent = Paddle.new(:right, 5, 0, 200)
+player = Paddle.new(:left, 8, 0, 200)
+opponent = Paddle.new(:right, 8, 0, 200)
 ball = Ball.new(ball_velocity)
 ball_trajectory = BallTrajectory.new(ball)
 scoreBoard = ScoreBoard.new(0,0)

@@ -17,7 +17,7 @@ ball = Ball.new(ball_velocity)
 ball_trajectory = BallTrajectory.new(ball)
 scoreBoard = ScoreBoard.new(0,0)
 
-Slist = ['./SFX/We-are-Finally-Landing.mp3','./SFX/Feel-Good','./SFX/On-The-Prowl(rX).mp3','./SFX/music.wav',
+Slist = ['./SFX/We-are-Finally-Landing.mp3','./SFX/Feel-Good.mp3','./SFX/On-The-Prowl(rX).mp3','./SFX/music.wav',
     './SFX/Nuclear-Winter.mp3','./SFX/Fogger (R).mp3','./SFX/Mechanical-Man(R).mp3','./SFX/Valves.mp3','./SFX/Scouting.mp3',
     './SFX/Mutants.mp3','./SFX/Brimstone.mp3','./SFX/Brain-Freeze (R).mp3','./SFX/Grinder.mp3','./SFX/Hell-March(R).mp3',
     './SFX/Femme-Fatale.mp3','./SFX/Queen-of-Knives.mp3','./SFX/Electro-Cabello.mp3']
@@ -37,14 +37,14 @@ update do
     ball.bounce_off(player)
     PING_SOUND.play
     last_hit_frame = Window.frames
-    player = Paddle.new(:left, 5, rand(4), player.y)
+    player = Paddle.new(:left, 8, rand(4), player.y)
   end
 
   if opponent.hit_ball?(ball)
     ball.bounce_off(opponent)
     PING_SOUND.play
     last_hit_frame = Window.frames
-    opponent = Paddle.new(:right, 5, rand(4), opponent.y)
+    opponent = Paddle.new(:right, 8, rand(4), opponent.y)
   end
 
   scoreBoard.draw

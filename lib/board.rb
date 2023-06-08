@@ -20,8 +20,8 @@ class DividingLine
     end
   
     def draw
-      left = Text.new(@PScore, x: Window.width / 2 - 100, y: 5, font: 'assets/PressStart2P.ttf', color: 'gray', size: 40)
-      right = Text.new(@OScore, x: Window.width / 2 + 60, y: 5, font: 'assets/PressStart2P.ttf', color: 'gray', size: 40)
+      left = Text.new(@PScore, x: Window.width / 2 - 90, y: 5, font: 'assets/PressStart2P.ttf', color: 'gray', size: 40)
+      right = Text.new(@OScore, x: Window.width / 2 + 70, y: 5, font: 'assets/PressStart2P.ttf', color: 'gray', size: 40)
     end
   
   end

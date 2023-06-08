@@ -5,14 +5,14 @@ class Paddle
     OPPONENT_MOVE_DELAY_FRAMES = 30
   
     attr_writer :y_movement
-    attr_reader :side
+    attr_reader :side, :y
   
-    def initialize(side, movement_speed, num)
+    def initialize(side, movement_speed, num, y_pos)
       @side = side
       @movement_speed = movement_speed
       @num = num
       @y_movement = 0
-      @y = 200
+      @y = y_pos
       if side == :left
         @x = X_OFFSET
       else

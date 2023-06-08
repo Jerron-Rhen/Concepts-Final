@@ -4,15 +4,15 @@ require './lib/board'
 require './lib/ball'
 require './lib/paddle'
 
-set background: 'black'
+set title: 'Pong', background: 'black', with: 9000, height: 480#, resizable: false
 
 PONG_SOUND = Sound.new('./SFX/pong.wav')
 PING_SOUND = Sound.new('./SFX/ping.wav')
 
 ball_velocity = 8
 
-player = Paddle.new(:left, 5, 0)
-opponent = Paddle.new(:right, 5, 0)
+player = Paddle.new(:left, 5, 0, 200)
+opponent = Paddle.new(:right, 5, 0, 200)
 ball = Ball.new(ball_velocity)
 ball_trajectory = BallTrajectory.new(ball)
 scoreBoard = ScoreBoard.new(0,0)
@@ -32,14 +32,14 @@ update do
     ball.bounce_off(player)
     PING_SOUND.play
     last_hit_frame = Window.frames
-    player = Paddle.new(:left, 5, rand(4))
+    player = Paddle.new(:left, 5, rand(4), player.y)
   end
 
   if opponent.hit_ball?(ball)
     ball.bounce_off(opponent)
     PING_SOUND.play
     last_hit_frame = Window.frames
-    opponent = Paddle.new(:right, 5, rand(4))
+    opponent = Paddle.new(:right, 5, rand(4), opponent.y)
   end
 
   scoreBoard.draw

@@ -11,8 +11,8 @@ PING_SOUND = Sound.new('./SFX/ping.wav')
 
 ball_velocity = 8
 
-player = Paddle.new(:left, 5)
-opponent = Paddle.new(:right, 5)
+player = Paddle.new(:left, 5, 0)
+opponent = Paddle.new(:right, 5, 0)
 ball = Ball.new(ball_velocity)
 ball_trajectory = BallTrajectory.new(ball)
 scoreBoard = ScoreBoard.new(0,0)
@@ -32,12 +32,14 @@ update do
     ball.bounce_off(player)
     PING_SOUND.play
     last_hit_frame = Window.frames
+    player = Paddle.new(:left, 5, rand(4))
   end
 
   if opponent.hit_ball?(ball)
     ball.bounce_off(opponent)
     PING_SOUND.play
     last_hit_frame = Window.frames
+    opponent = Paddle.new(:right, 5, rand(4))
   end
 
   scoreBoard.draw

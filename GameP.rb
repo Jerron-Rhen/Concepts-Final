@@ -107,6 +107,7 @@ class Paddle
 
   def draw
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     #@shape = Rectangle.new(x: @x, y: @y, width: 25, height: HEIGHT, color: 'white')
     if @side == :left
       if @num == 0
@@ -128,6 +129,8 @@ class Paddle
       elsif @num == 3
         @shape = Quad.new(x1: @x - 20, y1: @y, x2: @x - 40, y2: @y + 75, x3: @x - 20, y3: @y + 150, x4: @x, y4: @y + 75, color: 'white')
 =======
+=======
+>>>>>>> Stashed changes
     if @side == :left
       if @num == 0
         @shape = Rectangle.new(x: @x, y: @y, width: 25, height: HEIGHT, color: 'white')
@@ -147,6 +150,9 @@ class Paddle
         @shape = Quad.new(x1: @x - 20, y1: @y, x2: @x - 40, y2: @y + 75, x3: @x - 20, y3: @y + 150, x4: @x, y4: @y + 75, color: 'white')
       elsif @num == 3
         @shape = Square.new(x: @x - 70, y: @y, size: HEIGHT - 60, color: 'white')
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
       end
     end
@@ -262,9 +268,15 @@ ball_trajectory = BallTrajectory.new(ball)
 @score  = { left: 0, right: 0 }
 
 
+<<<<<<< Updated upstream
 music = Music.new('./SFX/music.wav')
 music.loop = true
 music.play
+=======
+bmg = Music.new('./SFX/music.wav')
+bmg.loop = true
+bmg.play
+>>>>>>> Stashed changes
 
 last_hit_frame = 0
 
@@ -287,6 +299,11 @@ update do
     opponent = Paddle.new(:right, 5, rand(4))
   end
 
+<<<<<<< Updated upstream
+=======
+  scoreBoard.draw
+
+>>>>>>> Stashed changes
   player.move
   player.draw
 
@@ -295,9 +312,15 @@ update do
 
   ball_trajectory.draw
 
+<<<<<<< Updated upstream
 #   opponent.track_ball(ball_trajectory, last_hit_frame)
     opponent.move
     opponent.draw
+=======
+  # opponent.track_ball(ball_trajectory, last_hit_frame)
+  opponent.move
+  opponent.draw
+>>>>>>> Stashed changes
 
   if ball.out_of_bounds?
     ball = Ball.new(ball_velocity)
